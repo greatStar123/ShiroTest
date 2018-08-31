@@ -1,0 +1,11 @@
+2、*在生成新的密钥过程中，有时会报错：  bash:ssh-key command not found
+  解决办法很简单，输入 $export PATH=/usr/bin:$PATH ，设置path变量。
+
+3、Filename too long
+在项目所在目录下面运行以下命令即可，我是用的第一种（鼠标右键--> Git Bash Here --> git config --system core.longpaths true）
+可以使用以下命令来修复：
+git config --system core.longpaths true
+也可以仅设置当前项目：
+git config core.longpaths true
+查看设置状态：
+git config core.longpaths 

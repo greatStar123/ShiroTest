@@ -1,0 +1,66 @@
+https://github.com/ 
+获取密钥：$ ssh-keygen -t rsa -C "1061748368@qq.com"
+
+检查是否连接到库：ssh -T git@github.com
+
+设置全局：
+$ git config --global user.name "greatStar123"
+$ git config --global user.email "1061748368@qq.com"
+
+先进入准备存放项目的本地目录，然后，克隆库中的项目： git clone https://github.com/greatStar123/ShiroTest.git
+
+提交文件，进入需要提交的文件的同级目录：git add test.txt
+之后输入然后git commit -m "cc"  引号内的内容可以随意改动，这个语句的意思是 给你刚刚上传的文件一个备注，方便查找记忆而已
+git push origin master在弹出框中登录
+1. 生成公钥
+
+首先检查本机公钥：
+
+$ cd ~/.ssh
+如果提示：No such file or directory 说明你是第一次使用git。如果不是第一次使用，请执行下面的操作,清理原有ssh密钥。
+
+$ mkdir key_backup
+$ cp id_rsa* key_backup
+$ rm id_rsa*
+生成新的密钥：
+
+$ ssh-keygen -t rsa -C “您的邮箱地址”
+在回车中会提示你输入一个密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。
+
+您可以在你本机系统盘下，您的用户文件夹里发现一个.ssh文件，其中的id_rsa.pub文件里储存的即为刚刚生成的ssh密钥。
+
+2. 添加公钥
+
+登录CODE平台，进入用户“账户设置”，点击右侧栏的“ssh公钥管理”，点击“添加公钥”，将刚刚生成的公钥填写到“公钥”栏，并为它起一个名称，保存即可。
+
+注意：复制公钥时不要复制多余的空格，否则可能添加不成功。
+
+3. 管理公钥
+
+您也可以在“账户设置”——“ssh公钥管理”删除或者修改公钥。
+
+<--------------------------------------------------------------------END------------------------------------------------------------------------------>
+
+   *在生成新的密钥过程中，有时会报错：  bash:ssh-key command not found
+
+  解决办法很简单，输入 $export PATH=/usr/bin:$PATH ，设置path变量。
+
+  ok，之后设置文件储存位置，设置密码，完成。
+
+  在C:\Users\Administrator\.ssh目录下，id_rsa.pub就是生成的公钥，用记事本打开就可以用了
+
+
+Filename too long解决方法：
+在项目所在目录下面运行以下命令即可，我是用的第一种（鼠标右键--> Git Bash Here --> git config --system core.longpaths true）
+
+可以使用以下命令来修复：
+
+git config --system core.longpaths true
+
+也可以仅设置当前项目：
+
+git config core.longpaths true
+
+查看设置状态：
+
+git config core.longpaths 
